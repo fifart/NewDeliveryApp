@@ -1,20 +1,33 @@
+import { Portal, Provider } from 'react-native-paper';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
+import MyComponent from './MyComponent';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider
+    // settings={{
+    //   icon: props => <FontAwesome5 {...props} size={21.5} />,
+    // }}
+    >
+      
+      <ImageBackground source={require('./assets/bg.jpg')} style={styles.background} />  
+      <Portal>
+        <StatusBar style="auto" />
+        <MyComponent />
+      </Portal>
+      
+    </Provider> 
+    
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  background: {
+    
+    width: '100%',
+    height: '100%'
   },
 });
